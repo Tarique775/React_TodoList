@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
+import { TodoContext } from '../Context/TodoContext';
 
-const Form = ({ inputText, setInputText, todos, setTodos, setStatus }) => {
+function Form() {
+    const { inputText, setInputText, todos, setTodos, setStatus } = useContext(TodoContext);
+
+    const inputRef = useRef(null);
+
+    useEffect(() => {
+        inputRef.current.focus();
+    }, []);
+
     const inputTextHandler = (e) => {
         setInputText(e.target.value);
     };
@@ -21,6 +30,7 @@ const Form = ({ inputText, setInputText, todos, setTodos, setStatus }) => {
         <form>
             <div className="d-flex justify-content-center">
                 <input
+                    ref={inputRef}
                     onChange={inputTextHandler}
                     type="text"
                     className="todo-input border-0"
@@ -43,6 +53,6 @@ const Form = ({ inputText, setInputText, todos, setTodos, setStatus }) => {
             </div>
         </form>
     );
-};
+}
 
 export default Form;

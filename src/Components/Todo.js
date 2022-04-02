@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Todo = ({ text, todos, todo, setTodos }) => {
+function Todo({ text, todos, todo, setTodos }) {
     const completeHandler = () => {
         setTodos(
             todos.map((item) => {
@@ -49,5 +49,5 @@ const Todo = ({ text, todos, todo, setTodos }) => {
             </div>
         </div>
     );
-};
+}
 export default Todo;
